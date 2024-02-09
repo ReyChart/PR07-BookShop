@@ -1,0 +1,56 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.container {
+  @include container;
+}
+
+.header_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 116px;
+}
+
+.header_logo {
+  font-weight: 900;
+  font-size: 24px;
+  color: $black-color;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav_list {
+  display: flex;
+  gap: 40px;
+  > li {
+    > .nav_link {
+      font-size: 10px;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $gray-color;
+      cursor: pointer;
+    }
+    & .active {
+      font-weight: 900;
+      color: $black-color;
+    }
+    & .nav_link:hover:not(.active) {
+      opacity: 0.7;
+      transition: all 0.4s ease-in-out;
+    }
+  }
+}
+
+.user_actions {
+  display: flex;
+  gap: 40px;
+  > button {
+    background: transparent;
+    cursor: pointer;
+  }
+  > button:hover {
+    transform: scale(1.2);
+    transition: transform 0.4s ease-in-out;
+  }
+}

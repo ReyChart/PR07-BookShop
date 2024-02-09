@@ -1,0 +1,19 @@
+@import '../../assets/styles/reset';
+@import '../../assets/styles/variables';
+
+*,
+*::before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font: 600 normal 10px/1.4 $default-font;
+  color: $gray-color;
+}
