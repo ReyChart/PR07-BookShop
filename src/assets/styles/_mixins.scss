@@ -2,3 +2,24 @@
   max-width: 1120px;
   margin: 0 auto;
 }
+
+@mixin banner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: $banner-shadow;
+  cursor: pointer;
+}
+
+@mixin bannerText {
+  font-size: 18px;
+  color: $black-color;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@mixin arrow {
+  width: 50px;
+  height: 12px;
+}

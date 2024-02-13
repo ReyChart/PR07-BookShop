@@ -3,4 +3,77 @@
 
 .container {
   @include container;
+  position: relative;
+}
+
+.slider_images {
+  img {
+    width: 100%;
+    display: none;
+
+    & .active {
+      display: block;
+    }
+  }
+}
+
+.banner_info_purple {
+  @include banner;
+  width: 149px;
+  height: 204px;
+  padding: 92px 20px 20px 20px;
+  background-color: $dote-color;
+  top: 79px;
+  right: -86px;
+
+  > p {
+    @include bannerText;
+  }
+
+  > img {
+    @include arrow;
+  }
+}
+
+.banner_info_pink {
+  @include banner;
+  width: 137px;
+  height: 273px;
+  padding: 139px 47px 20px 21px;
+  background-color: $banner-pink;
+  bottom: 70px;
+  right: -160px;
+
+  > p {
+    @include bannerText;
+  }
+
+  > img {
+    @include arrow;
+  }
+}
+
+.slider_dots {
+  margin-top: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  > div {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: $dote-bg-color;
+    cursor: pointer;
+    transition: background-color 0.4s ease-in-out;
+
+    &.active {
+      background-color: $dote-color;
+    }
+  }
+
+  > div:hover:not(.active) {
+    background-color: $dote-color;
+  }
 }
