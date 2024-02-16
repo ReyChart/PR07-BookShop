@@ -1,0 +1,170 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/mixins';
+
+.container {
+  @include container;
+  position: relative;
+}
+
+.booksblock_wrapper {
+  display: flex;
+}
+
+.books_categories {
+  width: 258px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -45px;
+    left: -100vw;
+    right: 864px;
+    height: 710px;
+    background-color: $dote-bg-color;
+    z-index: -1;
+  }
+
+  > li {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 23px;
+    cursor: pointer;
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
+
+    &.active {
+      position: relative;
+      font-size: 16px;
+      font-weight: 700;
+      color: $black-color;
+      list-style-type: none;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -16px;
+        display: block;
+        background-color: $choose-color;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.books_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 96px;
+  padding-bottom: 74px;
+
+  > div {
+    display: flex;
+    width: 924px;
+    flex-wrap: wrap;
+    gap: 96px 76px;
+  }
+
+  > .books_btn {
+    width: 176px;
+    height: 45px;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 10px;
+    text-transform: uppercase;
+    background: transparent;
+    color: $btn-color;
+    border: 1px solid $btn-color;
+    cursor: pointer;
+  }
+}
+
+.book_card {
+  width: 424px;
+  display: flex;
+  gap: 36px;
+
+  > .book_cover {
+    min-width: 212px;
+    height: 307px;
+    object-fit: cover;
+    box-shadow: $banner-shadow;
+  }
+}
+
+.book_info {
+  padding-top: 49px;
+
+  > p:first-child {
+    font-family: $additional-font;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  > h3 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: $black-color;
+  }
+
+  > .book_rating {
+    display: flex;
+    align-items: center;
+
+    > .full_star {
+      color: $full-star;
+      font-size: 12px;
+    }
+
+    > .empty_star {
+      color: $empty-star;
+      font-size: 12px;
+    }
+
+    > .book_reviews {
+      font-weight: 500;
+      color: $gray-color;
+      margin-left: 6px;
+    }
+  }
+
+  > .book_description {
+    font-family: $additional-font;
+    font-weight: 500;
+    margin-top: 16px;
+  }
+
+  > .book_price {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 16px;
+    color: $black-color;
+    margin-top: 16px;
+  }
+
+  > .book_btn {
+    width: 176px;
+    height: 45px;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 10px;
+    text-transform: uppercase;
+    background: transparent;
+    color: $btn-color;
+    border: 1px solid $btn-color;
+    margin-top: 16px;
+    cursor: pointer;
+
+    &.in_cart {
+      color: $gray-color;
+      border: 1px solid $empty-star;
+    }
+  }
+}
