@@ -23,6 +23,7 @@
 .nav_list {
   display: flex;
   gap: 40px;
+
   > li {
     > .nav_link {
       font-size: 10px;
@@ -31,10 +32,12 @@
       color: $gray-color;
       cursor: pointer;
     }
+
     & .active {
       font-weight: 900;
       color: $black-color;
     }
+
     & .nav_link:hover:not(.active) {
       opacity: 0.7;
       transition: all 0.4s ease-in-out;
@@ -45,10 +48,25 @@
 .user_actions {
   display: flex;
   gap: 40px;
+
   > button {
+    position: relative;
     background: transparent;
     cursor: pointer;
+
+    > .counter {
+      position: absolute;
+      bottom: -5px;
+      left: -5px;
+      z-index: 1;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background-color: red;
+      color: white;
+    }
   }
+
   > button:hover {
     transform: scale(1.2);
     transition: transform 0.4s ease-in-out;

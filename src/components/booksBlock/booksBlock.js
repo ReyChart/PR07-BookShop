@@ -91,7 +91,7 @@ export class BooksBlock {
       this.fetchBooks();
     });
 
-    this.initializeButtons();
+    this.changeButtons();
   }
 
   renderBooks() {
@@ -131,7 +131,7 @@ export class BooksBlock {
             </div>
             <p class="${style.book_description}">${description}</p>
             ${price ? `<div class="${style.book_price}">${price}</div>` : ''}
-            <button class="${style.book_btn} ${isInCart ? style.in_cart : ''}" data-book-id="${
+            <button class="${style.book_btn} ${isInCart ? style.book_btn_cart : ''}" data-bookid="${
           book.id
         }">
               ${isInCart ? 'In the cart' : 'Buy now'}
@@ -147,24 +147,26 @@ export class BooksBlock {
       .insertAdjacentHTML('beforeend', booksHTML);
   }
 
-  initializeButtons() {
+  changeButtons() {
     this.booksBlock.querySelector(`.${style.books_wrapper}`).addEventListener('click', (e) => {
       if (e.target.classList.contains(style.book_btn)) {
-        const bookId = e.target.dataset.bookId;
+        const bookId = e.target.dataset.bookid;
         let cartItems = JSON.parse(localStorage.getItem('inCart')) || [];
-        const isInCart = cartItems.includes(bookId);
+        const inCart = cartItems.includes(bookId);
 
-        if (isInCart) {
+        if (inCart) {
           cartItems = cartItems.filter((id) => id !== bookId);
           e.target.textContent = 'Buy now';
-          e.target.classList.remove(style.in_cart);
+          e.target.classList.remove(style.book_btn_cart);
         } else {
           cartItems.push(bookId);
           e.target.textContent = 'In the cart';
-          e.target.classList.add(style.in_cart);
+          e.target.classList.add(style.book_btn_cart);
         }
 
         localStorage.setItem('inCart', JSON.stringify(cartItems));
+
+        document.dispatchEvent(new CustomEvent('updateCartCounter'));
       }
     });
   }

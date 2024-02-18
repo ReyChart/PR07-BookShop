@@ -4,6 +4,7 @@ export class Header {
   constructor(header) {
     this.header = header;
     this.render();
+    this.customEventListener();
   }
 
   render() {
@@ -35,7 +36,7 @@ export class Header {
               <img src="./iconSearch.svg" alt="search icon" />
             </button>
             <button>
-              <img src="./iconShop.svg" alt="shop icon" />
+              <img src="./iconShop.svg" alt="shop icon" /><span class="${style.counter}"></span>
             </button>
           </div>
         </div>
@@ -43,6 +44,7 @@ export class Header {
       `;
     this.header.innerHTML = headerHTML;
     this.addListeners();
+    this.updateCounter();
   }
 
   addListeners() {
@@ -54,5 +56,21 @@ export class Header {
         e.currentTarget.classList.add(style.active);
       });
     });
+  }
+
+  customEventListener() {
+    document.addEventListener('updateCartCounter', () => this.updateCounter());
+  }
+
+  updateCounter() {
+    const counter = this.header.querySelector(`.${style.counter}`);
+    const cartItems = JSON.parse(localStorage.getItem('inCart')) || [];
+    const itemsCounter = cartItems.length;
+
+    if (itemsCounter > 0) {
+      counter.innerHTML = `${itemsCounter}`;
+    } else {
+      counter.innerHTML = '';
+    }
   }
 }
