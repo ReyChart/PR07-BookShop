@@ -29,14 +29,14 @@ export class Header {
             </ul>
           </nav>
           <div class="${style.user_actions}">
-            <button>
+            <button type="button" disabled>
               <img src="./iconUser.svg" alt="user icon" />
             </button>
-            <button>
+            <button type="button" disabled>
               <img src="./iconSearch.svg" alt="search icon" />
             </button>
-            <button>
-              <img src="./iconShop.svg" alt="shop icon" /><span class="${style.counter}"></span>
+            <button type="button" disabled>
+              <img src="./iconShop.svg" alt="cart icon" /><span class="${style.counter}"></span>
             </button>
           </div>
         </div>
@@ -69,8 +69,10 @@ export class Header {
 
     if (itemsCounter > 0) {
       counter.innerHTML = `${itemsCounter}`;
+      counter.classList.remove(style.hidden);
     } else {
       counter.innerHTML = '';
+      counter.classList.add(style.hidden);
     }
   }
 }

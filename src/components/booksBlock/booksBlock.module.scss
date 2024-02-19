@@ -72,16 +72,11 @@
   }
 
   > .books_btn {
-    width: 176px;
-    height: 45px;
-    font-size: 8px;
-    font-weight: 700;
-    line-height: 10px;
-    text-transform: uppercase;
-    background: transparent;
-    color: $btn-color;
-    border: 1px solid $btn-color;
-    cursor: pointer;
+    @include bookButton;
+
+    &.hidden {
+      display: none;
+    }
   }
 }
 
@@ -102,8 +97,7 @@
   padding-top: 49px;
 
   > p:first-child {
-    font-family: $additional-font;
-    font-weight: 500;
+    @include bookInfo;
     margin-bottom: 4px;
   }
 
@@ -136,8 +130,7 @@
   }
 
   > .book_description {
-    font-family: $additional-font;
-    font-weight: 500;
+    @include bookInfo;
     margin-top: 16px;
   }
 
@@ -150,17 +143,8 @@
   }
 
   > .book_btn {
-    width: 176px;
-    height: 45px;
-    font-size: 8px;
-    font-weight: 700;
-    line-height: 10px;
-    text-transform: uppercase;
-    background: transparent;
-    color: $btn-color;
-    border: 1px solid $btn-color;
+    @include bookButton;
     margin-top: 16px;
-    cursor: pointer;
 
     &.book_btn_cart {
       color: $gray-color;

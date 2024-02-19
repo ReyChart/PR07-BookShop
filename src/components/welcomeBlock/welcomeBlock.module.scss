@@ -26,10 +26,6 @@
   top: 79px;
   right: -86px;
 
-  > p {
-    @include bannerText;
-  }
-
   > img {
     @include arrow;
   }
@@ -43,10 +39,6 @@
   background-color: $banner-pink;
   bottom: 70px;
   right: -160px;
-
-  > p {
-    @include bannerText;
-  }
 
   > img {
     @include arrow;

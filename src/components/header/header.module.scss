@@ -57,13 +57,18 @@
     > .counter {
       position: absolute;
       bottom: -5px;
-      left: -5px;
+      right: -4px;
       z-index: 1;
       width: 13px;
       height: 13px;
       border-radius: 50%;
-      background-color: red;
-      color: white;
+      background-color: $counter-bg;
+      font-weight: 500;
+      color: $white-color;
+
+      &.hidden {
+        display: none;
+      }
     }
   }
 

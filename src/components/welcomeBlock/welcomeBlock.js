@@ -24,14 +24,14 @@ export class WelcomeBlock {
       <div class="${style.container}">
           <div class="${style.slider_images}"></div>
           <div class="${style.banner_info}">
-            <div class="${style.banner_info_purple}">
-              <p>Change old book on new</p>
-              <img src="./arrowBanner.svg" alt="arrow right" />
-            </div>
-            <div class="${style.banner_info_pink}">
-              <p>Top 100 books 2022</p>
-              <img src="./arrowBanner.svg" alt="arrow right" />
-            </div>
+            <a href="#" class="${style.banner_info_purple}">
+              Change old book on new
+              <img src="./arrowBanner.svg" alt="arrow right">
+            </a>
+            <a href="#" class="${style.banner_info_pink}">
+            Top 100 books 2022
+            <img src="./arrowBanner.svg" alt="arrow right">
+            </a>
           </div>
           <div class="${style.slider_dots}"></div>
       </div>

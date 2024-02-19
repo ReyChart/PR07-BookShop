@@ -6,21 +6,21 @@ export class BooksBlock {
     this.booksBlock = booksBlock;
     this.booksCategories = [
       'Architecture',
-      'Art & Fashion',
+      'Art & Fashion|Art',
       'Biography',
       'Business',
-      'Crafts & Hobbies',
+      'Crafts & Hobbies|Hobbies',
       'Drama',
       'Fiction',
-      'Food & Drink',
-      'Health & Wellbeing',
-      'History & Politics',
+      'Food & Drink|Food',
+      'Health & Wellbeing|Health',
+      'History & Politics|History',
       'Humor',
       'Poetry',
       'Psychology',
       'Science',
       'Technology',
-      'Travel & Maps',
+      'Travel & Maps|Travel',
     ];
     this.activeCategory = this.booksCategories[0];
     this.books = [];
@@ -31,8 +31,11 @@ export class BooksBlock {
   }
 
   async fetchBooks() {
+    const categoryParts = this.activeCategory.split('|');
+    const queryCategory = categoryParts.length > 1 ? categoryParts[1] : categoryParts[0];
+
     const params = {
-      q: `subject:${this.activeCategory}`,
+      q: `subject:${queryCategory}`,
       maxResults: this.booksResult,
       startIndex: (this.booksIndex - 1) * this.booksResult,
       printType: 'books',
@@ -46,6 +49,8 @@ export class BooksBlock {
 
       this.books = response.data.items;
       this.renderBooks();
+
+      this.booksBlock.querySelector(`.${style.books_btn}`).classList.remove(style.hidden);
     } catch (error) {
       console.error('Error fetching: ', error);
     }
@@ -54,8 +59,9 @@ export class BooksBlock {
   render() {
     const booksCategoriesListHTML = this.booksCategories
       .map((category) => {
+        const [displayName] = category.split('|');
         const categoryClass = category === this.activeCategory ? style.active : '';
-        return `<li class="${categoryClass}" data-category="${category}">${category}</li>`;
+        return `<li class="${categoryClass}" data-category="${category}">${displayName}</li>`;
       })
       .join('');
 
@@ -67,7 +73,7 @@ export class BooksBlock {
           </ul>
           <div class="${style.books_wrapper}">
             <div class="${style.books_list}"></div>
-            <button class="${style.books_btn}">Load More</button>
+            <button type="button" class="${style.books_btn} ${style.hidden}">Load More</button>
           </div>
         </div>
       </div>
@@ -99,7 +105,9 @@ export class BooksBlock {
     const booksHTML = this.books
       .map((book) => {
         const isInCart = cartItems.includes(book.id);
-        const cover = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : '';
+        const cover = book.volumeInfo.imageLinks
+          ? book.volumeInfo.imageLinks.thumbnail
+          : './public/booksPlaceholder.png';
         const author = book.volumeInfo.authors
           ? book.volumeInfo.authors.join(', ')
           : 'Unknown Author';
@@ -126,14 +134,18 @@ export class BooksBlock {
           <div class="${style.book_info}">
             <p class=${style.book_author}>${author}</p>
             <h3 class=${style.book_title}>${title}</h3>
-            <div class="${style.book_rating}">
-              ${rating}<span class="${style.book_reviews}"> ${reviews}</span>
-            </div>
+            ${
+              rating
+                ? `<div class="${style.book_rating}">
+                  ${rating}<span class="${style.book_reviews}"> ${reviews}</span>
+                </div>`
+                : ''
+            }
             <p class="${style.book_description}">${description}</p>
             ${price ? `<div class="${style.book_price}">${price}</div>` : ''}
-            <button class="${style.book_btn} ${isInCart ? style.book_btn_cart : ''}" data-bookid="${
-          book.id
-        }">
+            <button type="button" class="${style.book_btn} ${
+          isInCart ? style.book_btn_cart : ''
+        }" data-bookid="${book.id}">
               ${isInCart ? 'In the cart' : 'Buy now'}
             </button>
           </div>
@@ -206,5 +218,7 @@ export class BooksBlock {
         element.classList.remove(style.active);
       }
     });
+
+    this.booksBlock.querySelector(`.${style.books_btn}`).classList.add(style.hidden);
   }
 }

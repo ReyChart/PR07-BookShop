@@ -18,6 +18,14 @@ body {
   color: $gray-color;
 }
 
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: $white-color;
+}
+
 .books_block {
   margin-top: 150px;
 }
