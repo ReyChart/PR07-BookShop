@@ -39,12 +39,18 @@ export class Header {
               <img src="./iconShop.svg" alt="cart icon" /><span class="${style.counter}"></span>
             </button>
           </div>
+          <button class="${style.burger_menu}" type="button">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
       `;
     this.header.innerHTML = headerHTML;
     this.addListeners();
     this.updateCounter();
+    this.initBurgerMenu();
   }
 
   addListeners() {
@@ -74,5 +80,15 @@ export class Header {
       counter.innerHTML = '';
       counter.classList.add(style.hidden);
     }
+  }
+
+  initBurgerMenu() {
+    const burgerMenu = document.querySelector(`.${style.burger_menu}`);
+    const nav = document.querySelector(`.${style.nav}`);
+
+    burgerMenu.addEventListener('click', () => {
+      nav.classList.toggle(style.nav_active);
+      burgerMenu.classList.toggle(style.burger_active);
+    });
   }
 }

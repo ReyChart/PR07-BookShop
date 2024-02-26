@@ -22,6 +22,26 @@
     height: 710px;
     background-color: $dote-bg-color;
     z-index: -1;
+
+    @include tabletLarge {
+      right: 700px;
+    }
+
+    @include tabletSmall {
+      right: 550px;
+    }
+
+    @include mobileLarge {
+      right: 400px;
+    }
+
+    @include mobileMedium {
+      right: 300px;
+    }
+
+    @include mobileSmall {
+      right: 250px;
+    }
   }
 
   > li {
@@ -29,6 +49,10 @@
     font-weight: 500;
     margin-bottom: 23px;
     cursor: pointer;
+
+    @include tabletLarge {
+      padding-left: 20px;
+    }
 
     &:last-child {
       margin-bottom: 0px;
@@ -52,6 +76,11 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
+
+        @include netbook {
+          width: 0;
+          height: 0;
+        }
       }
     }
   }
@@ -64,11 +93,28 @@
   gap: 96px;
   padding-bottom: 74px;
 
+  @include mobileSmall {
+    gap: 50px;
+  }
+
   > div {
     display: flex;
     width: 924px;
     flex-wrap: wrap;
     gap: 96px 76px;
+
+    @include tabletLarge {
+      max-width: 800px;
+      justify-content: center;
+    }
+
+    @include tabletSmall {
+      width: 100%;
+    }
+
+    @include mobileMedium {
+      gap: 70px 50px;
+    }
   }
 
   > .books_btn {
@@ -85,6 +131,12 @@
   display: flex;
   gap: 36px;
 
+  @include mobileSmall {
+    max-width: 212px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
   > .book_cover {
     min-width: 212px;
     height: 307px;
@@ -95,6 +147,10 @@
 
 .book_info {
   padding-top: 49px;
+
+  @include mobileSmall {
+    padding-top: 0;
+  }
 
   > p:first-child {
     @include bookInfo;
@@ -149,6 +205,10 @@
     &.book_btn_cart {
       color: $gray-color;
       border: 1px solid $empty-star;
+
+      @include mobileSmall {
+        border-color: $gray-color;
+      }
     }
   }
 }

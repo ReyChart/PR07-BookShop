@@ -26,6 +26,25 @@
   top: 79px;
   right: -86px;
 
+  @include tabletLarge {
+    top: 10px;
+  }
+
+  @include tabletSmall {
+    top: 0px;
+    right: 40px;
+  }
+
+  @include mobileLarge {
+    top: 20px;
+    padding-top: 20px;
+    max-height: 150px;
+  }
+
+  @include mobileSmall {
+    display: none;
+  }
+
   > img {
     @include arrow;
   }
@@ -39,6 +58,26 @@
   background-color: $banner-pink;
   bottom: 70px;
   right: -160px;
+
+  @include tabletLarge {
+    bottom: 45px;
+    right: -120px;
+  }
+
+  @include tabletSmall {
+    bottom: 30px;
+    right: 10px;
+  }
+
+  @include mobileLarge {
+    bottom: 40px;
+    max-height: 150px;
+    padding-top: 20px;
+  }
+
+  @include mobileSmall {
+    display: none;
+  }
 
   > img {
     @include arrow;
@@ -59,6 +98,11 @@
     background-color: $dote-bg-color;
     cursor: pointer;
     transition: background-color 0.4s ease-in-out;
+
+    @include mobileMedium {
+      width: 8px;
+      height: 8px;
+    }
 
     &.active {
       background-color: $dote-color;

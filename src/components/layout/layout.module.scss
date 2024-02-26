@@ -1,3 +1,4 @@
+@import '../../assets/styles/mixins';
 @import '../../assets/styles/reset';
 @import '../../assets/styles/variables';
 
@@ -24,8 +25,20 @@ body {
   left: 0;
   z-index: 1;
   background-color: $white-color;
+
+  @include notebook {
+    position: relative;
+  }
 }
 
 .books_block {
   margin-top: 150px;
+
+  @include mobileMedium {
+    margin-top: 120px;
+  }
+
+  @include mobileSmall {
+    margin-top: 90px;
+  }
 }

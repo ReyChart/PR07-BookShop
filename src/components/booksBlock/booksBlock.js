@@ -107,7 +107,7 @@ export class BooksBlock {
         const isInCart = cartItems.includes(book.id);
         const cover = book.volumeInfo.imageLinks
           ? book.volumeInfo.imageLinks.thumbnail
-          : './public/booksPlaceholder.png';
+          : './booksPlaceholder.png';
         const author = book.volumeInfo.authors
           ? book.volumeInfo.authors.join(', ')
           : 'Unknown Author';
